@@ -1,7 +1,7 @@
 FetchContent_Declare(
     flatbuffer
     GIT_REPOSITORY https://github.com/google/flatbuffers.git
-    GIT_TAG        v23.5.26
+    GIT_TAG        v25.12.19
     GIT_SHALLOW    ON
 )
 

@@ -57,19 +57,19 @@ function(init_d3d12_cache_variables prefix)
 
     # <PREFIX>_D3D12_NUGET_VERSION
     set(${prefix}_D3D12_NUGET_VERSION
-        1.611.2
+        1.618.5
         CACHE STRING "Version of the D3D12 NuGet package (TYPE == nuget)."
     )
 
     # <PREFIX>_D3D12_NUGET_HASH
     set(${prefix}_D3D12_NUGET_HASH 
-        414858c5cf25e43022938ab992d78a9639b1a9a48efe5b4a05fca2df9294388c
+        0027FC24F947C48DBDED13ADA7D280BE221EB651644E23A8A476F0F1F0A079DD
         CACHE STRING "SHA256 hash of the D3D12 NuGet package (TYPE == nuget)."
     )
 
     # <PREFIX>_D3D12_HEADERS_TAG
     set(${prefix}_D3D12_HEADERS_TAG
-        de28d93dfa9ebf3e473127c1c657e1920a5345ee # v1.613.1
+        dde59d560da2760fec612d6634124edc2a26b82f # v1.618.2
         CACHE STRING "Git commit/tag for headers in the DirectX-Headers repo."
     )
 endfunction()

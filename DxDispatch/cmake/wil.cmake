@@ -43,7 +43,7 @@ function(init_wil_cache_variables prefix)
 
     # <PREFIX>_WIL_SOURCE_TAG
     set(${prefix}_WIL_SOURCE_TAG
-        2e225973d6c2ecf17fb4d376ddbeedb6db7dd82f
+        b6ec76a2d9a609897f25a7fa0a0bdf4238e94e35 # v1.0.250325.1
         CACHE STRING "Git commit/tag hash of the WIL repo  (TYPE == source)."
     )
 endfunction()

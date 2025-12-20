@@ -53,13 +53,13 @@ function(init_pix_cache_variables prefix)
 
     # <PREFIX>_PIX_NUGET_VERSION
     set(${prefix}_PIX_NUGET_VERSION
-        1.0.230302001
+        1.0.240308001
         CACHE STRING "Version of the PIX event runtime NuGet package (TYPE == nuget)."
     )
 
     # <PREFIX>_PIX_NUGET_HASH
     set(${prefix}_PIX_NUGET_HASH 
-        1CC9C6618A00F26375A8D98ADBA60620904FBF6A8E71007E14439CA01436589D
+        726acc93d6968e2146261a1e415521747d50ad69894c2b42b5d0d4c29fd66ec4
         CACHE STRING "SHA256 hash of the PIX event runtime NuGet package (TYPE == nuget)."
     )
 endfunction()
