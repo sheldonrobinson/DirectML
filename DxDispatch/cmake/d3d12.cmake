@@ -67,9 +67,9 @@ function(init_d3d12_cache_variables prefix)
         CACHE STRING "SHA256 hash of the D3D12 NuGet package (TYPE == nuget)."
     )
 
-    # <PREFIX>_D3D12_HEADERS_TAG
+    # <PREFIX>_D3D12_HEADERS_TAG v1.618.2
     set(${prefix}_D3D12_HEADERS_TAG
-        dde59d560da2760fec612d6634124edc2a26b82f # v1.618.2
+        dde59d560da2760fec612d6634124edc2a26b82f 
         CACHE STRING "Git commit/tag for headers in the DirectX-Headers repo."
     )
 endfunction()
