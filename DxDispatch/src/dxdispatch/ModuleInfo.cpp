@@ -19,7 +19,7 @@ struct LanguageAndCodePage
     WORD codePage;
 };
 
-std::optional<ModuleInfo> GetModuleInfo(gsl::czstring<> moduleName)
+std::optional<ModuleInfo> GetModuleInfo(gsl::czstring moduleName)
 {
     auto moduleHandle = GetModuleHandleA(moduleName);
     if (!moduleHandle)

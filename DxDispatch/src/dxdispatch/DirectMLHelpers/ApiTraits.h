@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 #pragma once
 
+#include <gsl/gsl>
+
 namespace ApiTraits
 {
 template <typename T>
@@ -2654,12 +2656,12 @@ auto OperatorTypeVisitor(DML_OPERATOR_TYPE type, Visitor&& visitor, Ts&&... args
 namespace StringifyHelpers
 {
 template <typename T>
-inline gsl::czstring<> ToString(T value)
+inline gsl::czstring ToString(T value)
 {
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_TENSOR_DATA_TYPE value)
+inline gsl::czstring ToString(DML_TENSOR_DATA_TYPE value)
 {
     switch (value)
     {
@@ -2684,7 +2686,7 @@ inline gsl::czstring<> ToString(DML_TENSOR_DATA_TYPE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_TENSOR_TYPE value)
+inline gsl::czstring ToString(DML_TENSOR_TYPE value)
 {
     switch (value)
     {
@@ -2697,7 +2699,7 @@ inline gsl::czstring<> ToString(DML_TENSOR_TYPE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_OPERATOR_TYPE value)
+inline gsl::czstring ToString(DML_OPERATOR_TYPE value)
 {
     switch (value)
     {
@@ -2882,7 +2884,7 @@ inline gsl::czstring<> ToString(DML_OPERATOR_TYPE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_BINDING_TYPE value)
+inline gsl::czstring ToString(DML_BINDING_TYPE value)
 {
     switch (value)
     {
@@ -2896,7 +2898,7 @@ inline gsl::czstring<> ToString(DML_BINDING_TYPE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_REDUCE_FUNCTION value)
+inline gsl::czstring ToString(DML_REDUCE_FUNCTION value)
 {
     switch (value)
     {
@@ -2919,7 +2921,7 @@ inline gsl::czstring<> ToString(DML_REDUCE_FUNCTION value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_MATRIX_TRANSFORM value)
+inline gsl::czstring ToString(DML_MATRIX_TRANSFORM value)
 {
     switch (value)
     {
@@ -2932,7 +2934,7 @@ inline gsl::czstring<> ToString(DML_MATRIX_TRANSFORM value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_CONVOLUTION_MODE value)
+inline gsl::czstring ToString(DML_CONVOLUTION_MODE value)
 {
     switch (value)
     {
@@ -2945,7 +2947,7 @@ inline gsl::czstring<> ToString(DML_CONVOLUTION_MODE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_CONVOLUTION_DIRECTION value)
+inline gsl::czstring ToString(DML_CONVOLUTION_DIRECTION value)
 {
     switch (value)
     {
@@ -2958,7 +2960,7 @@ inline gsl::czstring<> ToString(DML_CONVOLUTION_DIRECTION value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_PADDING_MODE value)
+inline gsl::czstring ToString(DML_PADDING_MODE value)
 {
     switch (value)
     {
@@ -2973,7 +2975,7 @@ inline gsl::czstring<> ToString(DML_PADDING_MODE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_INTERPOLATION_MODE value)
+inline gsl::czstring ToString(DML_INTERPOLATION_MODE value)
 {
     switch (value)
     {
@@ -2986,7 +2988,7 @@ inline gsl::czstring<> ToString(DML_INTERPOLATION_MODE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_RECURRENT_NETWORK_DIRECTION value)
+inline gsl::czstring ToString(DML_RECURRENT_NETWORK_DIRECTION value)
 {
     switch (value)
     {
@@ -3000,7 +3002,7 @@ inline gsl::czstring<> ToString(DML_RECURRENT_NETWORK_DIRECTION value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_FEATURE value)
+inline gsl::czstring ToString(DML_FEATURE value)
 {
     switch (value)
     {
@@ -3013,7 +3015,7 @@ inline gsl::czstring<> ToString(DML_FEATURE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_FEATURE_LEVEL value)
+inline gsl::czstring ToString(DML_FEATURE_LEVEL value)
 {
     switch (value)
     {
@@ -3038,7 +3040,7 @@ inline gsl::czstring<> ToString(DML_FEATURE_LEVEL value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_IS_INFINITY_MODE value)
+inline gsl::czstring ToString(DML_IS_INFINITY_MODE value)
 {
     switch (value)
     {
@@ -3052,7 +3054,7 @@ inline gsl::czstring<> ToString(DML_IS_INFINITY_MODE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_DEPTH_SPACE_ORDER value)
+inline gsl::czstring ToString(DML_DEPTH_SPACE_ORDER value)
 {
     switch (value)
     {
@@ -3065,7 +3067,7 @@ inline gsl::czstring<> ToString(DML_DEPTH_SPACE_ORDER value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_AXIS_DIRECTION value)
+inline gsl::czstring ToString(DML_AXIS_DIRECTION value)
 {
     switch (value)
     {
@@ -3078,7 +3080,7 @@ inline gsl::czstring<> ToString(DML_AXIS_DIRECTION value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_ROUNDING_MODE value)
+inline gsl::czstring ToString(DML_ROUNDING_MODE value)
 {
     switch (value)
     {
@@ -3092,7 +3094,7 @@ inline gsl::czstring<> ToString(DML_ROUNDING_MODE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_RANDOM_GENERATOR_TYPE value)
+inline gsl::czstring ToString(DML_RANDOM_GENERATOR_TYPE value)
 {
     switch (value)
     {
@@ -3104,7 +3106,7 @@ inline gsl::czstring<> ToString(DML_RANDOM_GENERATOR_TYPE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_MULTIHEAD_ATTENTION_MASK_TYPE value)
+inline gsl::czstring ToString(DML_MULTIHEAD_ATTENTION_MASK_TYPE value)
 {
     switch (value)
     {
@@ -3120,7 +3122,7 @@ inline gsl::czstring<> ToString(DML_MULTIHEAD_ATTENTION_MASK_TYPE value)
 }
 
 template <>
-inline gsl::czstring<> ToString(DML_QUANTIZATION_TYPE value)
+inline gsl::czstring ToString(DML_QUANTIZATION_TYPE value)
 {
     switch (value)
     {

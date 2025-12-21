@@ -35,6 +35,6 @@ struct ModuleInfo
     std::wstring version;
 };
 
-std::optional<ModuleInfo> GetModuleInfo(gsl::czstring<> moduleName);
+std::optional<ModuleInfo> GetModuleInfo(gsl::czstring moduleName);
 
 void PrintDependencies();
