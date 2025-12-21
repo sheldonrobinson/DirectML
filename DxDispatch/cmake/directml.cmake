@@ -218,7 +218,7 @@ function(add_directml_target target_name)
     # Always make DirectMLX header available.
     FetchContent_Declare(
         directmlx
-        URL https://raw.githubusercontent.com/microsoft/DirectML/a9614e82c9226b09826d18c5e63926a774ca5ab5/Libraries/DirectMLX.h
+        URL https://raw.githubusercontent.com/sheldonrobinson/DirectML/c818022b8017fb3de40785f9ea9316fc5c6387bc/Libraries/DirectMLX.h
         DOWNLOAD_NO_EXTRACT 1
     )
     FetchContent_MakeAvailable(directmlx)

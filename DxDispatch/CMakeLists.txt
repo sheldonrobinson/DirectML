@@ -118,7 +118,7 @@ set_target_properties(model PROPERTIES
     # set_target_properties(model PROPERTIES POSITION_INDEPENDENT_CODE ON)
 # endif()
 
-target_compile_definitions(model PRIVATE DMLX_USE_ABSEIL)
+target_compile_definitions(model PRIVATE DMLX_USE_ABSEIL=1)
 target_compile_features(model PRIVATE cxx_std_17)
 target_precompile_headers(model PRIVATE src/model/pch.h)
 target_include_directories(model INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src/model)
@@ -177,7 +177,7 @@ set_property(DIRECTORY PROPERTY VS_STARTUP_PROJECT dxdispatch)
 
 if(WIN32)
     if(TARGET_WINDOWS)
-        target_compile_definitions(dxdispatchImpl PRIVATE INCLUDE_DXGI=1)
+        target_compile_definitions(dxdispatchImpl PRIVATE INCLUDE_DXGI=1 DMLX_USE_ABSEIL=1)
         target_link_libraries(dxdispatchImpl PRIVATE dxgi)
     endif()
     target_sources(dxdispatchImpl PRIVATE ${CMAKE_CURRENT_BINARY_DIR}/dxdispatchImpl.rc)
@@ -207,6 +207,9 @@ target_link_libraries(
     onnxruntime
     onnxruntime_extensions
     flatbuffer
+	absl::optional
+	absl::span
+	absl::inlined_vector
 )
 
 target_compile_features(dxdispatchImpl PRIVATE cxx_std_17)
@@ -218,7 +221,11 @@ if(MSVC)
     set_target_properties(dxdispatchImpl PROPERTIES LINK_FLAGS "/DEF:${PROJECT_SOURCE_DIR}/src/dxdispatch/dxdispatch.def ")
 endif()
 
-set_target_properties(dxdispatchImpl PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/dxdispatch/DxDispatchInterface.h)
+set_target_properties(dxdispatchImpl PROPERTIES 
+	PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/dxdispatch/DxDispatchInterface.h
+	POSITION_INDEPENDENT_CODE ON 
+	CXX_STANDARD 17
+	)
 
 if(DIRECTML_INSTALL)
 	install(TARGETS dxdispatchImpl
