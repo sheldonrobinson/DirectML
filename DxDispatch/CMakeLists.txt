@@ -9,6 +9,8 @@ if(POLICY CMP0135)
     cmake_policy(SET CMP0135 NEW)
 endif()
 
+OPTION(DIRECTML_INSTALL "Install applicatuins and libraries" OFF)
+
 include(FetchContent)
 include(cmake/helper_platform.cmake)
 
@@ -207,29 +209,34 @@ endif()
 
 set_target_properties(dxdispatchImpl PROPERTIES PUBLIC_HEADER ${CMAKE_CURRENT_SOURCE_DIR}/src/dxdispatch/DxDispatchInterface.h)
 
-install(TARGETS dxdispatchImpl
-    RUNTIME DESTINATION bin 
-    LIBRARY DESTINATION bin
-    PUBLIC_HEADER DESTINATION bin)
-install(FILES $<TARGET_LINKER_FILE:dxdispatchImpl> 
-    DESTINATION bin
-    OPTIONAL)
+if(DIRECTML_INSTALL)
+	install(TARGETS dxdispatchImpl
+		RUNTIME DESTINATION bin 
+		LIBRARY DESTINATION bin
+		PUBLIC_HEADER DESTINATION bin)
+	install(FILES $<TARGET_LINKER_FILE:dxdispatchImpl> 
+		DESTINATION bin
+		OPTIONAL)
+endif()
+
 if(WIN32)
     install(FILES $<TARGET_PDB_FILE:dxdispatchImpl>
         DESTINATION bin
         OPTIONAL)
 endif()
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/models DESTINATION bin)
-install(
-    FILES 
-    ${CMAKE_CURRENT_SOURCE_DIR}/ThirdPartyNotices.txt
-    ${CMAKE_CURRENT_SOURCE_DIR}/doc/Guide.md
-    DESTINATION bin
-)
+if(DIRECTML_INSTALL)
+	install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/models DESTINATION bin)
+	install(
+		FILES 
+		${CMAKE_CURRENT_SOURCE_DIR}/ThirdPartyNotices.txt
+		${CMAKE_CURRENT_SOURCE_DIR}/doc/Guide.md
+		DESTINATION bin
+	)
 
-if(WIN32)
-    install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tools/AnalyzePixGpuCapture.ps1 DESTINATION bin/tools)
+	if(WIN32)
+		install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/tools/AnalyzePixGpuCapture.ps1 DESTINATION bin/tools)
+	endif()
 endif()
 
 if(TARGET_XBOX)
@@ -291,15 +298,17 @@ if(WIN32)
 endif()
 
 target_copy_redist_dependencies(dxdispatch)
-install(
-    FILES 
-    $<TARGET_FILE:dxdispatch>
-    DESTINATION bin
-)
-if(WIN32)
-    install(FILES $<TARGET_PDB_FILE:dxdispatch>
-        DESTINATION bin
-        OPTIONAL)
+if(DIRECTML_INSTALL)
+	install(
+		FILES 
+		$<TARGET_FILE:dxdispatch>
+		DESTINATION bin
+	)
+	if(WIN32)
+		install(FILES $<TARGET_PDB_FILE:dxdispatch>
+			DESTINATION bin
+			OPTIONAL)
+	endif()
 endif()
 
 # ==============================================================================
