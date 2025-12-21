@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 project(dxdispatch VERSION 0.18.1 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ==============================================================================
 # External Libraries/Helpers
@@ -26,6 +28,7 @@ if(TARGET_WSL)
     set(CMAKE_INSTALL_RPATH "$\{ORIGIN\}")
 endif()
 
+include(cmake/abseil.cmake)
 include(cmake/gsl.cmake)
 include(cmake/rapidjson.cmake)
 include(cmake/flatbuffer.cmake)
@@ -68,7 +71,7 @@ add_onnxruntime_extensions_target(onnxruntime_extensions CACHE_PREFIX DXD)
 # Global Defines for CMAKE
 # ==============================================================================
 if(MSVC)
-    add_compile_options(/guard:cf /Qspectre /GS /sdl  /W3 )    
+    add_compile_options(/guard:cf /GS /sdl  /W3 )    
     if( TARGET_ARCH STREQUAL ARM64 OR
         TARGET_ARCH STREQUAL ARM)
         add_link_options(/GUARD:CF /DYNAMICBASE)
@@ -102,12 +105,20 @@ target_link_libraries(
     wil
     d3d12
     directml
+	absl::optional
+	absl::span
+	absl::inlined_vector
 )
 
-if(TARGET_WSL)
-    set_target_properties(model PROPERTIES POSITION_INDEPENDENT_CODE ON)
-endif()
+set_target_properties(model PROPERTIES
+	POSITION_INDEPENDENT_CODE ON 
+	CXX_STANDARD 17)
 
+# if(TARGET_WSL)
+    # set_target_properties(model PROPERTIES POSITION_INDEPENDENT_CODE ON)
+# endif()
+
+target_compile_definitions(model PRIVATE DMLX_USE_ABSEIL)
 target_compile_features(model PRIVATE cxx_std_17)
 target_precompile_headers(model PRIVATE src/model/pch.h)
 target_include_directories(model INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/src/model)

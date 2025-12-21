@@ -30,6 +30,9 @@
     #if __cpp_lib_span
         #include <span>
     #endif
+	#include <absl/types/optional.h>
+	#include <absl/types/span.h>
+	#include <absl/container/inlined_vector.h>
 #elif __cplusplus >= 201703L && __has_include(<optional>)
     // stl optional is only available in cpp17 and above.
     #include <optional>
